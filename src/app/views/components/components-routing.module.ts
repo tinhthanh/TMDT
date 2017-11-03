@@ -2,6 +2,7 @@ import { TrinhComponent } from './trinh.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
+
 import { ButtonsComponent } from './buttons.component';
 import { CardsComponent } from './cards.component';
 import { FormsComponent } from './forms.component';
@@ -12,6 +13,7 @@ import { TablesComponent } from './tables.component';
 import { TabsComponent } from './tabs.component';
 
 import { MyComponent } from './my.component';
+
 
 const routes: Routes = [
   {

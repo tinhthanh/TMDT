@@ -1,7 +1,13 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-
+import { FormsModule }  from '@angular/forms';
+import { CommonModule } from '@angular/common'; 
+import { HttpModule } from  '@angular/http';
+import { ConfigValue } from './_models/ConfigValue';
+import { AuthSercurity } from  './_sercurity/AuthSercurity';
+import { Authentication } from './_service/AuthenticationService';
 // Import Containers
+
 import {
   FullLayoutComponent,
   SimpleLayoutComponent,
@@ -18,6 +24,7 @@ export const routes: Routes = [
   path: 'admin',
   redirectTo: '/dashboard',
   pathMatch: 'full',
+  canActivate: [AuthSercurity]
   },
   {
     path: '',
@@ -28,11 +35,13 @@ export const routes: Routes = [
     children: [
       {
         path: 'dashboard',
-        loadChildren: './views/dashboard/dashboard.module#DashboardModule'
+        loadChildren: './views/dashboard/dashboard.module#DashboardModule',
+        canActivate: [AuthSercurity]
       },
       {
         path: 'components',
-        loadChildren: './views/components/components.module#ComponentsModule'
+        loadChildren: './views/components/components.module#ComponentsModule',
+        canActivate: [AuthSercurity]
       },
       {
         path: 'icons',
@@ -74,8 +83,22 @@ export const routes: Routes = [
   }
 ];
 
+// chú ý commonModule để phái trên hoặc dưới
 @NgModule({
-  imports: [ RouterModule.forRoot(routes) ],
+  imports: [ 
+    HttpModule,
+    CommonModule ,
+    FormsModule,
+    RouterModule.forRoot(routes),
+  ],
+  providers: [ 
+    Authentication,
+     ConfigValue,
+     AuthSercurity
+  ],
   exports: [ RouterModule ]
 })
-export class AppRoutingModule {}
+export class AppRoutingModule {
+
+
+}
