@@ -1,3 +1,4 @@
+import { TrinhComponent } from './trinh.component';
 import { NgModule } from '@angular/core';
 
 import { ButtonsComponent } from './buttons.component';
@@ -23,6 +24,7 @@ import { MyComponent }  from './my.component';
  
 
 
+
 // Components Routing
 import { ComponentsRoutingModule } from './components-routing.module';
 
@@ -42,7 +44,8 @@ import { ComponentsRoutingModule } from './components-routing.module';
     SwitchesComponent,
     TablesComponent,
     TabsComponent,
-    MyComponent
+    MyComponent,
+    TrinhComponent
   ]
 })
 export class ComponentsModule { }

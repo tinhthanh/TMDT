@@ -2,12 +2,18 @@ import { Component, ElementRef, Input, OnInit, Renderer2 } from '@angular/core';
 
 // Import navigation elements
 import { navigation } from './../../_nav';
+import { navigation2 } from './../../_nav2';
 
 @Component({
   selector: 'app-sidebar-nav',
   template: `
     <nav class="sidebar-nav">
-      <ul class="nav">
+    <ul >
+     <li >  
+     <button type="button" (click)="isShow = !isShow" class="btn btn-default">ẩn/hiện</button>
+     </li>
+    </ul>
+      <ul  *ngIf="isShow" class="nav">
         <ng-template ngFor let-navitem [ngForOf]="navigation">
           <li *ngIf="isDivider(navitem)" class="nav-divider"></li>
           <ng-template [ngIf]="isTitle(navitem)">
@@ -18,11 +24,25 @@ import { navigation } from './../../_nav';
           </ng-template>
         </ng-template>
       </ul>
+
+      <ul  *ngIf="!isShow" class="nav">
+      <ng-template ngFor let-navitem [ngForOf]="navigation2">
+        <li *ngIf="isDivider(navitem)" class="nav-divider"></li>
+        <ng-template [ngIf]="isTitle(navitem)">
+          <app-sidebar-nav-title [title]='navitem'></app-sidebar-nav-title>
+        </ng-template>
+        <ng-template [ngIf]="!isDivider(navitem)&&!isTitle(navitem)">
+          <app-sidebar-nav-item [item]='navitem'></app-sidebar-nav-item>
+        </ng-template>
+      </ng-template>
+    </ul>
+
     </nav>`
 })
 export class AppSidebarNavComponent {
-
+     isShow: boolean = true;
   public navigation = navigation;
+  public navigation2 = navigation2;
 
   public isDivider(item) {
     return item.divider ? true : false

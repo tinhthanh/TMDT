@@ -1,3 +1,4 @@
+import { TrinhComponent } from './trinh.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
@@ -11,6 +12,7 @@ import { TablesComponent } from './tables.component';
 import { TabsComponent } from './tabs.component';
 
 import { MyComponent } from './my.component';
+
 const routes: Routes = [
   {
     path: '',
@@ -79,6 +81,13 @@ const routes: Routes = [
         component: MyComponent,
         data: {
           title: 'mydemo'
+        }
+      },
+      {
+        path: 'trinh',
+        component:  TrinhComponent,
+        data: {
+          title: ' trinh cho'
         }
       }
     ]

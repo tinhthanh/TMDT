@@ -31,7 +31,7 @@ import {
   APP_SIDEBAR_NAV,
   HomeNavbarComponent,
   HomeFooterComponent,
-  HomeWowsliderComponent
+  HomeWowsliderComponent ,
 } from './components';
 
 const APP_COMPONENTS = [
