@@ -1,0 +1,23 @@
+footer {
+	
+	@include basic-font($font2, #000000);
+	padding: 50px 0 50px 0;
+	.imap {
+		position: relative;
+        height: 300px;
+        overflow: hidden;
+
+        iframe {
+        	 position: absolute;
+        top: 0;
+        left: 0;
+        width: 100% !important;
+        height: 100% !important;
+        }
+	}
+}
+.ifooter {
+	padding: 10px 0 5px 0;
+	background: $color4;
+	color: #ffffff;
+}

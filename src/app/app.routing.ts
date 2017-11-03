@@ -4,7 +4,8 @@ import { Routes, RouterModule } from '@angular/router';
 // Import Containers
 import {
   FullLayoutComponent,
-  SimpleLayoutComponent
+  SimpleLayoutComponent,
+  HomeLayoutComponent
 } from './containers';
 
 export const routes: Routes = [
@@ -42,6 +43,17 @@ export const routes: Routes = [
       }
     ]
   },
+  {
+    path: 'home',
+    component: HomeLayoutComponent ,
+    children: [
+      {
+        path: '',
+        loadChildren: './views/home/home.module#HomeModule'
+      }
+    ]
+  }
+   ,
   {
     path: 'pages',
     component: SimpleLayoutComponent,

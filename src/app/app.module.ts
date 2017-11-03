@@ -1,18 +1,20 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
-
+import { Router } from '@angular/router';
 import { AppComponent } from './app.component';
 
 // Import containers
 import {
   FullLayoutComponent,
-  SimpleLayoutComponent
+  SimpleLayoutComponent,
+  HomeLayoutComponent
 } from './containers';
 
 const APP_CONTAINERS = [
   FullLayoutComponent,
-  SimpleLayoutComponent
+  SimpleLayoutComponent,
+  HomeLayoutComponent
 ]
 
 // Import components
@@ -26,7 +28,10 @@ import {
   AppSidebarFormComponent,
   AppSidebarHeaderComponent,
   AppSidebarMinimizerComponent,
-  APP_SIDEBAR_NAV
+  APP_SIDEBAR_NAV,
+  HomeNavbarComponent,
+  HomeFooterComponent,
+  HomeWowsliderComponent
 } from './components';
 
 const APP_COMPONENTS = [
@@ -39,7 +44,10 @@ const APP_COMPONENTS = [
   AppSidebarFormComponent,
   AppSidebarHeaderComponent,
   AppSidebarMinimizerComponent,
-  APP_SIDEBAR_NAV
+  APP_SIDEBAR_NAV,
+  HomeNavbarComponent,
+  HomeFooterComponent,
+  HomeWowsliderComponent
 ]
 
 // Import directives
@@ -85,4 +93,8 @@ import { ChartsModule } from 'ng2-charts/ng2-charts';
   }],
   bootstrap: [ AppComponent ]
 })
-export class AppModule { }
+export class AppModule {
+  constructor(router: Router) {
+    console.log('Routes: ', JSON.stringify(router.config, undefined, 2));
+  }
+ }
