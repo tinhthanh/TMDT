@@ -9,4 +9,6 @@ import { PostComponent } from './components/post.component';
            PostComponent
       ]
 })
-export class HomeModule { }
+export class HomeModule {
+      
+ }

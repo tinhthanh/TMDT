@@ -1,7 +1,7 @@
 export const navigation2 = [
     {
       name: 'Manager',
-      url: '/dashboard',
+      url: '/admin/dashboard',
       icon: 'icon-speedometer',
       badge: {
         variant: 'info',
@@ -14,52 +14,50 @@ export const navigation2 = [
     },
     {
       name: 'Components',
-      url: '/components',
+      url: '/admin/components',
       icon: 'icon-puzzle',
       children: [
         {
           name: 'my demo',
-          url: '/components/mydemo',
+          url: '/admin/components/mydemo',
           icon: 'icon-puzzle'
         }
       ]
     },
     {
       name: 'Widgets',
-      url: '/widgets',
+      url: '/admin/widgets',
       icon: 'icon-calculator',
       badge: {
         variant: 'info',
         text: 'NEW'
       }
     },
-    
     {
       name: 'Pages',
-      url: '/pages',
+      url: '/admin/pages',
       icon: 'icon-star',
       children: [
         {
           name: 'Login',
-          url: '/pages/login',
+          url: '/admin/pages/login',
           icon: 'icon-star'
         },
         {
-          name: 'Register',
-          url: '/pages/register',
+          name: '/Register',
+          url: '/admin/pages/register',
           icon: 'icon-star'
         },
         {
           name: 'Error 404',
-          url: '/pages/404',
+          url: '/admin/pages/404',
           icon: 'icon-star'
         },
         {
           name: 'Error 500',
-          url: '/pages/500',
+          url: '/admin/pages/500',
           icon: 'icon-star'
         }
       ]
     }
   ];
-  

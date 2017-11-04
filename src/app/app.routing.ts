@@ -1,13 +1,15 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { FormsModule }  from '@angular/forms';
-import { CommonModule } from '@angular/common'; 
-import { HttpModule } from  '@angular/http';
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { HttpModule } from '@angular/http';
 import { ConfigValue } from './_models/ConfigValue';
-import { AuthSercurity } from  './_sercurity/AuthSercurity';
+import { AuthSercurity } from './_sercurity/AuthSercurity';
 import { Authentication } from './_service/AuthenticationService';
 // Import Containers
-
+import {  P404Component } from './views/pages/404.component';
+import { AlertService } from './_service/alert.service';
+// import { AlertComponent } from './_notification/alert.component';
 import {
   FullLayoutComponent,
   SimpleLayoutComponent,
@@ -21,13 +23,7 @@ export const routes: Routes = [
     pathMatch: 'full',
   },
   {
-  path: 'admin',
-  redirectTo: '/dashboard',
-  pathMatch: 'full',
-  canActivate: [AuthSercurity]
-  },
-  {
-    path: '',
+    path: 'admin',
     component: FullLayoutComponent,
     data: {
       title: 'Home'
@@ -35,13 +31,11 @@ export const routes: Routes = [
     children: [
       {
         path: 'dashboard',
-        loadChildren: './views/dashboard/dashboard.module#DashboardModule',
-        canActivate: [AuthSercurity]
+        loadChildren: './views/dashboard/dashboard.module#DashboardModule'
       },
       {
         path: 'components',
-        loadChildren: './views/components/components.module#ComponentsModule',
-        canActivate: [AuthSercurity]
+        loadChildren: './views/components/components.module#ComponentsModule'
       },
       {
         path: 'icons',
@@ -55,7 +49,8 @@ export const routes: Routes = [
         path: 'charts',
         loadChildren: './views/chartjs/chartjs.module#ChartJSModule'
       }
-    ]
+    ],
+    canActivate: [AuthSercurity]
   },
   {
     path: 'home',
@@ -81,20 +76,32 @@ export const routes: Routes = [
       }
     ]
   }
+  ,
+  {
+   path: '**', component: P404Component
+    }
 ];
 
 // chú ý commonModule để phái trên hoặc dưới
 @NgModule({
-  imports: [ 
+  imports: [
     HttpModule,
     CommonModule ,
     FormsModule,
-    RouterModule.forRoot(routes),
+    RouterModule.forRoot(routes 
+      // , { enableTracing: true }
+    ),
   ],
-  providers: [ 
+  providers: [
     Authentication,
      ConfigValue,
-     AuthSercurity
+     AuthSercurity,
+     AlertService
+  ],
+  declarations:  [
+    P404Component
+    /* ,
+    AlertComponent */
   ],
   exports: [ RouterModule ]
 })

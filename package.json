@@ -16,6 +16,7 @@
   },
   "private": true,
   "dependencies": {
+    "@angular/animations": "^5.0.0",
     "@angular/common": "4.4.4",
     "@angular/compiler": "4.4.4",
     "@angular/core": "4.4.4",
@@ -23,6 +24,7 @@
     "@angular/http": "4.4.4",
     "@angular/platform-browser": "4.4.4",
     "@angular/platform-browser-dynamic": "4.4.4",
+    "@angular/platform-server": "^5.0.0",
     "@angular/router": "4.4.4",
     "@angular/upgrade": "4.4.4",
     "chart.js": "2.7.0",

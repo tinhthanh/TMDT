@@ -1,7 +1,7 @@
 export const navigation = [
   {
     name: ' Công cụ',
-    url: '/dashboard',
+    url: '/admin/dashboard',
     icon: 'icon-speedometer',
     badge: {
       variant: 'info',
@@ -14,65 +14,65 @@ export const navigation = [
   },
   {
     name: 'Components',
-    url: '/components',
+    url: '/admin/components',
     icon: 'icon-puzzle',
     children: [
       {
         name: 'Buttons',
-        url: '/components/buttons',
+        url: '/admin/components/buttons',
         icon: 'icon-puzzle'
       },
       {
         name: 'Social Buttons',
-        url: '/components/social-buttons',
+        url: '/admin/components/social-buttons',
         icon: 'icon-puzzle'
       },
       {
         name: 'Cards',
-        url: '/components/cards',
+        url: '/admin/components/cards',
         icon: 'icon-puzzle'
       },
       {
         name: 'Forms',
-        url: '/components/forms',
+        url: '/admin/components/forms',
         icon: 'icon-puzzle'
       },
       {
         name: 'Modals',
-        url: '/components/modals',
+        url: '/admin/components/modals',
         icon: 'icon-puzzle'
       },
       {
         name: 'Switches',
-        url: '/components/switches',
+        url: '/admin/components/switches',
         icon: 'icon-puzzle'
       },
       {
         name: 'Tables',
-        url: '/components/tables',
+        url: '/admin/components/tables',
         icon: 'icon-puzzle'
       },
       {
         name: 'Tabs',
-        url: '/components/tabs',
+        url: '/admin/components/tabs',
         icon: 'icon-puzzle'
       }
       ,
       {
         name: 'my demo',
-        url: '/components/mydemo',
+        url: '/admin/components/mydemo',
         icon: 'icon-puzzle'
       }
     ]
   },
   {
     name: 'Icons',
-    url: '/icons',
+    url: '/admin/icons',
     icon: 'icon-star',
     children: [
       {
         name: 'Font Awesome',
-        url: '/icons/font-awesome',
+        url: '/admin/icons/font-awesome',
         icon: 'icon-star',
         badge: {
           variant: 'secondary',
@@ -81,14 +81,14 @@ export const navigation = [
       },
       {
         name: 'Simple Line Icons',
-        url: '/icons/simple-line-icons',
+        url: '/admin/icons/simple-line-icons',
         icon: 'icon-star'
       }
     ]
   },
   {
     name: 'Widgets',
-    url: '/widgets',
+    url: '/admin/widgets',
     icon: 'icon-calculator',
     badge: {
       variant: 'info',
@@ -97,7 +97,7 @@ export const navigation = [
   },
   {
     name: 'Charts',
-    url: '/charts',
+    url: '/admin/charts',
     icon: 'icon-pie-chart'
   },
   {
@@ -109,27 +109,27 @@ export const navigation = [
   },
   {
     name: 'Pages',
-    url: '/pages',
+    url: '/admin/pages',
     icon: 'icon-star',
     children: [
       {
         name: 'Login',
-        url: '/pages/login',
+        url: '/admin/pages/login',
         icon: 'icon-star'
       },
       {
         name: 'Register',
-        url: '/pages/register',
+        url: '/admin/pages/register',
         icon: 'icon-star'
       },
       {
         name: 'Error 404',
-        url: '/pages/404',
+        url: '/admin/pages/404',
         icon: 'icon-star'
       },
       {
         name: 'Error 500',
-        url: '/pages/500',
+        url: '/admin/pages/500',
         icon: 'icon-star'
       }
     ]

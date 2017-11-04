@@ -1,19 +1,23 @@
 import { NgModule } from '@angular/core';
-
-import { P404Component } from './404.component';
+import { FormsModule } from '@angular/forms';
 import { P500Component } from './500.component';
-import { LoginComponent } from './login.component';
 import { RegisterComponent } from './register.component';
 
 import { PagesRoutingModule } from './pages-routing.module';
+import { RoleComponent } from './role.component';
+import { LoginComponent } from './login.component';
+import { AlertComponent } from '../../_notification/alert.component';
 
 @NgModule({
-  imports: [ PagesRoutingModule ],
+  imports: [
+    PagesRoutingModule,
+    FormsModule ],
   declarations: [
-    P404Component,
     P500Component,
+    RegisterComponent,
+    RoleComponent,
     LoginComponent,
-    RegisterComponent
+    AlertComponent
   ]
 })
 export class PagesModule { }

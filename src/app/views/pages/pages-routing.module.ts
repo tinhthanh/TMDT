@@ -1,12 +1,12 @@
+
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
 
-import { P404Component } from './404.component';
 import { P500Component } from './500.component';
-import { LoginComponent } from './login.component';
 import { RegisterComponent } from './register.component';
-
-
+import {  RoleComponent } from './role.component';
+import { LoginComponent } from './login.component' ;
 const routes: Routes = [
   {
     path: '',
@@ -15,24 +15,24 @@ const routes: Routes = [
     },
     children: [
       {
-        path: '404',
-        component: P404Component,
+        path: 'login',
+        component: LoginComponent,
         data: {
-          title: 'Page 404'
-        }
+          title: 'Role access'
+        },
+      },
+      {
+        path: 'role',
+        component: RoleComponent,
+        data: {
+          title: 'Role access'
+        },
       },
       {
         path: '500',
         component: P500Component,
         data: {
           title: 'Page 500'
-        }
-      },
-      {
-        path: 'login',
-        component: LoginComponent,
-        data: {
-          title: 'Login Page'
         }
       },
       {
@@ -48,6 +48,9 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [
+    CommonModule,
+    RouterModule
+  ]
 })
 export class PagesRoutingModule {}
