@@ -3,10 +3,15 @@ import 'rxjs/add/operator/switchMap';
 import { Component, OnInit, HostBinding } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Router, ActivatedRoute, ParamMap, Params } from '@angular/router';
+import {slideInDownAnimation } from '../../../../animations';
 @Component({
-    templateUrl: 'view-details.component.html'
+    templateUrl: 'view-details.component.html',
+    animations: [ slideInDownAnimation ]
 })
 export class ViewDetailsComponent implements OnInit {
+    @HostBinding('@routeAnimation') routeAnimation = true;
+    @HostBinding('style.display')   display = 'block';
+    @HostBinding('style.position')  position = 'absolute';
         id: number;
     constructor(
         private route: ActivatedRoute,
