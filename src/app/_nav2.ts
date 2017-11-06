@@ -13,6 +13,23 @@ export const navigation2 = [
       name: 'Role Admin'
     },
     {
+      name: 'Khoa hoc',
+      url: '/admin/khoa-hoc',
+      icon: 'icon-puzzle',
+      children: [
+        {
+          name: 'view',
+          url: '/admin/khoa-hoc/view',
+          icon: 'icon-puzzle'
+        },
+        {
+          name: 'view-details',
+          url: '/admin/khoa-hoc/view-details/1234',
+          icon: 'icon-puzzle'
+        }
+      ]
+    },
+    {
       name: 'Components',
       url: '/admin/components',
       icon: 'icon-puzzle',

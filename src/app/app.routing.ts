@@ -48,6 +48,10 @@ export const routes: Routes = [
       {
         path: 'charts',
         loadChildren: './views/chartjs/chartjs.module#ChartJSModule'
+      },
+      {
+        path: 'khoa-hoc',
+        loadChildren: './views/admin/khoa-hoc/khoahoc.module#KhoaHocModule'
       }
     ],
     canActivate: [AuthSercurity]

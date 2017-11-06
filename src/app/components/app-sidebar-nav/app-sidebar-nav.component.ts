@@ -9,7 +9,7 @@ import { navigation2 } from './../../_nav2';
   template: `
     <nav class="sidebar-nav">
     <ul >
-     <li >  
+     <li >
      <button type="button" (click)="isShow = !isShow" class="btn btn-default">ẩn/hiện</button>
      </li>
     </ul>
