@@ -5,7 +5,7 @@ import { ThemChuongMucComponent } from './them-chuong-muc/them-chuong-muc.compon
 import { TaoKhoaHocComponent } from './tao-khoa-hoc.component';
 import { ThemBaiHocComponent } from './them-bai-hoc/them-bai-hoc.component';
 import { DashboardComponent } from './dashboard/dashboard.component';
-import { CKEditorModule } from 'ng2-ckeditor';
+
 
 import { CommonModule } from '@angular/common';
 const routes: Routes = [
@@ -49,8 +49,6 @@ const routes: Routes = [
 @NgModule({
        imports: [
         CommonModule,
- 
-        CKEditorModule,
            RouterModule.forChild(routes)
        ],
        exports: [

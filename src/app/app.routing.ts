@@ -1,13 +1,13 @@
+import { CkeditorComponent } from './ckeditor/ckeditor.component';
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { FormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
 import { HttpModule } from '@angular/http';
 import { ConfigValue } from './_models/ConfigValue';
 import { AuthSercurity } from './_sercurity/AuthSercurity';
 import { Authentication } from './_service/AuthenticationService';
 // Import Containers
 import {  P404Component } from './views/pages/404.component';
+
 import { AlertService } from './_service/alert.service';
 
 
@@ -23,6 +23,10 @@ export const routes: Routes = [
     path: '',
     redirectTo: '/home/post',
     pathMatch: 'full',
+  },
+  {
+    path: 'ckeditor',
+    component: CkeditorComponent,
   },
   {
     path: 'admin',
@@ -96,8 +100,6 @@ export const routes: Routes = [
 @NgModule({
   imports: [
     HttpModule,
-    CommonModule ,
-    FormsModule,
     RouterModule.forRoot(routes 
       // , { enableTracing: true }
     ),

@@ -5,6 +5,9 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class KhoaHocComponent implements OnInit {
+    content: string;
     constructor() { }
-    ngOnInit() { }
+    ngOnInit() {
+        this.content = 'hihi';
+     }
 }

@@ -4,9 +4,8 @@ import { NgModule } from '@angular/core';
 import { LocationStrategy, HashLocationStrategy } from '@angular/common';
 import { Router } from '@angular/router';
 import { AppComponent } from './app.component';
-
-
-
+import { FormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
 // Import containers
 import {
   FullLayoutComponent,
@@ -75,21 +74,27 @@ import { AppRoutingModule } from './app.routing';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { ChartsModule } from 'ng2-charts/ng2-charts';
+import { CKEditorModule } from 'ng2-ckeditor';
+import { CkeditorComponent } from './ckeditor/ckeditor.component';
 
 @NgModule({
   imports: [
+    CKEditorModule,
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
     BsDropdownModule.forRoot(),
     TabsModule.forRoot(),
-    ChartsModule
+    ChartsModule,
+    CommonModule ,
+    FormsModule,
   ],
   declarations: [
     AppComponent,
     ...APP_CONTAINERS,
     ...APP_COMPONENTS,
-    ...APP_DIRECTIVES
+    ...APP_DIRECTIVES,
+    CkeditorComponent
   ],
   providers: [{
     provide: LocationStrategy,
