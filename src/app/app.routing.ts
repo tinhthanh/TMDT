@@ -9,6 +9,8 @@ import { Authentication } from './_service/AuthenticationService';
 // Import Containers
 import {  P404Component } from './views/pages/404.component';
 import { AlertService } from './_service/alert.service';
+
+
 // import { AlertComponent } from './_notification/alert.component';
 import {
   FullLayoutComponent,
@@ -52,6 +54,10 @@ export const routes: Routes = [
       {
         path: 'khoa-hoc',
         loadChildren: './views/admin/khoa-hoc/khoahoc.module#KhoaHocModule'
+      },
+      {
+        path: 'phe-duyet',
+        loadChildren: './views/admin/phe-duyet/phe-duyet.module#PheDuyetModuel'
       }
     ],
     canActivate: [AuthSercurity]

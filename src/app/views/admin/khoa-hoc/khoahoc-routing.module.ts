@@ -25,7 +25,14 @@ const routes: Routes = [
               data: {
                   title: 'view details'
               }
-          }
+          },
+          {
+            path: 'tao-khoa-hoc',
+            loadChildren: './tao-khoa-hoc/tao-khoa-hoc.module#TaoKhoaHocModule',
+            data: {
+                title: 'Tao khoa hoc'
+            }
+        }
       ]
   }
 ]

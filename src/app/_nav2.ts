@@ -26,6 +26,11 @@ export const navigation2 = [
           name: 'view-details',
           url: '/admin/khoa-hoc/view-details/1234',
           icon: 'icon-puzzle'
+        },
+        {
+          name: 'Tạo Khóa Học',
+          url: '/admin/khoa-hoc/tao-khoa-hoc',
+          icon: 'icon-puzzle'
         }
       ]
     },
@@ -37,6 +42,28 @@ export const navigation2 = [
         {
           name: 'my demo',
           url: '/admin/components/mydemo',
+          icon: 'icon-puzzle'
+        }
+      ]
+    },
+    {
+      name: 'Phê Duyệt ',
+      url: '/admin/phe-duyet',
+      icon: 'icon-puzzle',
+      children: [
+        {
+          name: ' Duyệt Khóa học',
+          url: '/admin/phe-duyet/duyet-khoa-hoc',
+          icon: 'icon-puzzle'
+        },
+        {
+          name: ' Duyệt tài khoãn',
+          url: '/admin/phe-duyet/duyet-tai-khoan',
+          icon: 'icon-puzzle'
+        },
+        {
+          name: ' Duyệt bình luận',
+          url: '/admin/phe-duyet/duyet-binh-luan',
           icon: 'icon-puzzle'
         }
       ]
