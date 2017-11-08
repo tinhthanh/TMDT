@@ -1,3 +1,4 @@
+import { ThemMoTaComponent } from './them-mo-ta/them-mo-ta.component';
 import { ThemVideoBaiHocComponent } from './them-video-bai-hoc/them-video-bai-hoc.component';
 import { Routes, RouterModule } from '@angular/router';
 import { NgModule} from '@angular/core';
@@ -40,6 +41,13 @@ const routes: Routes = [
                 component: DashboardComponent,
                 data: {
                     title: 'dasboard'
+                }
+            },
+            {
+                path: 'them-mo-ta',
+                component: ThemMoTaComponent,
+                data: {
+                    title: 'Thêm Mô tả'
                 }
             }
         ]

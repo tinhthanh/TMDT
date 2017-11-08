@@ -8,6 +8,8 @@ import { DashboardComponent } from './dashboard/dashboard.component';
 import { CKEditorModule } from 'ng2-ckeditor';
 import { FormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
+import { KhoaHocService } from '../../../../_service/tao-khoa-hoc/khoa-hoc.service';
+import {  ThemMoTaComponent} from './them-mo-ta/them-mo-ta.component';
 @NgModule( {
      imports: [
         FormsModule,
@@ -21,7 +23,11 @@ import { CommonModule } from '@angular/common';
         ThemChuongMucComponent,
         ThemVideoBaiHocComponent,
         TaoKhoaHocComponent,
-        DashboardComponent
+        DashboardComponent,
+        ThemMoTaComponent
+     ],
+     providers: [
+         KhoaHocService
      ]
 })
 

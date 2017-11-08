@@ -1,4 +1,4 @@
-import { CkeditorComponent } from './ckeditor/ckeditor.component';
+
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HttpModule } from '@angular/http';
@@ -23,10 +23,6 @@ export const routes: Routes = [
     path: '',
     redirectTo: '/home/post',
     pathMatch: 'full',
-  },
-  {
-    path: 'ckeditor',
-    component: CkeditorComponent,
   },
   {
     path: 'admin',
