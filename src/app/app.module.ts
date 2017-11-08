@@ -75,6 +75,7 @@ import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { ChartsModule } from 'ng2-charts/ng2-charts';
 import { CKEditorModule } from 'ng2-ckeditor';
+import { SendToComponent } from './send-to/send-to.component';
 
 @NgModule({
   imports: [
@@ -92,7 +93,8 @@ import { CKEditorModule } from 'ng2-ckeditor';
     AppComponent,
     ...APP_CONTAINERS,
     ...APP_COMPONENTS,
-    ...APP_DIRECTIVES
+    ...APP_DIRECTIVES,
+    SendToComponent
   ],
   providers: [{
     provide: LocationStrategy,

@@ -42,10 +42,11 @@ export class Authentication{
                     const hd =  new RequestOptions({ headers: headers });
                       this.http.get(this.config.url_port + '/api/whoami', hd)
                          .toPromise()
-                         .then( res => res.json())
+                         .then( resv => resv.json())
                          .then(
-                              res => {
-                                user.profile =  res;
+                              resv => {
+                                console.log(resv);
+                                user.profile =  resv;
                                 console.log(user);
                                 localStorage.setItem(this.config.token_tmdt, JSON.stringify(user));
                               }
@@ -53,7 +54,7 @@ export class Authentication{
                  } else {
                      return null;
                  }
-               return res.json() as Token  } )
+               return user as Token  } )
         .catch(this.handleError);
       }
       private handleError(error: any): Promise<any> {
