@@ -3,6 +3,7 @@ import { Injectable } from '@angular/core';
 import { Http, Headers, Response, RequestOptions } from '@angular/http';
 // import { Observable } from 'rxjs/Observable';
 import { ConfigValue } from '../_models/ConfigValue';
+
 // luu mãng từ resfull gửi về
 import 'rxjs/add/operator/map';
 import 'rxjs/add/operator/toPromise';

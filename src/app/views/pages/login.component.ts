@@ -20,7 +20,8 @@ export class LoginComponent implements OnInit {
     private alertService: AlertService,
     private authsercurity: AuthSercurity ) { }
   ngOnInit(): void {
-    this.auth.logout();
+    this.auth.logout();  // xoa tokem
+    this.authsercurity.setCanActivate(false); // chna vao trang admin
     this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';
     console.log(this.returnUrl);
   }
@@ -48,6 +49,6 @@ export class LoginComponent implements OnInit {
 
   }
    chuyenTrang(): void {
-    this.router.navigate(['/send-to' , { url : this.returnUrl }]);
+    this.router.navigate([ this.returnUrl ]);
    }
 }

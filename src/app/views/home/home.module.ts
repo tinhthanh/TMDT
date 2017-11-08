@@ -1,4 +1,4 @@
-import { NgModule }  from '@angular/core';
+import { NgModule } from '@angular/core';
 import { HomeRoutingModule } from './home-routing.module';
 import { PostComponent } from './components/post.component';
 @NgModule( {
@@ -10,5 +10,4 @@ import { PostComponent } from './components/post.component';
       ]
 })
 export class HomeModule {
-      
  }

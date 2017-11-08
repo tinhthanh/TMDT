@@ -28,4 +28,7 @@ export class DashboardComponent implements OnInit {
     removeData() {
          this.khoahocservice.remove();
     }
+    goToChuong() {
+        this.router.navigate(['/admin/khoa-hoc/tao-khoa-hoc/them-chuong-muc'])
+    }
 }

@@ -1,4 +1,3 @@
-import { SendToComponent } from './send-to/send-to.component';
 
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -24,10 +23,6 @@ export const routes: Routes = [
     path: '',
     redirectTo: '/home/post',
     pathMatch: 'full',
-  },
-  {
-    path: 'send-to',
-    component: SendToComponent,
   },
   {
     path: 'admin',
