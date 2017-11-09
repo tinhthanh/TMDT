@@ -9,5 +9,6 @@ import { PostComponent } from './components/post.component';
            PostComponent
       ]
 })
+
 export class HomeModule {
  }

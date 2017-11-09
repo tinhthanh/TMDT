@@ -8,18 +8,30 @@ const routes: Routes = [
      {
          path: '',
          component: PheDuyetComponent,
+         data: {
+            title: 'Phê duyệt'
+        },
          children: [
              {
                  path: 'duyet-khoa-hoc',
-                 component: DuyetKhoaHocComponent
+                 component: DuyetKhoaHocComponent,
+                 data: {
+                    title: 'Duyệt khóa'
+                },
              },
              {
                 path: 'duyet-tai-khoan',
-                component: DuyetTaiKhoanComponent
+                component: DuyetTaiKhoanComponent,
+                data: {
+                    title: 'Duyệt tài khoản'
+                },
             },
             {
                 path: 'duyet-binh-luan',
-                component: DuyetBinhLuanComponent
+                component: DuyetBinhLuanComponent,
+                data: {
+                    title: 'Duyệt bình luận'
+                },
             }
          ]
      }

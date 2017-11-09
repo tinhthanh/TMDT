@@ -28,7 +28,7 @@ export const routes: Routes = [
     path: 'admin',
     component: FullLayoutComponent,
     data: {
-      title: 'Home'
+      title: 'admin'
     },
     children: [
       {
@@ -58,6 +58,10 @@ export const routes: Routes = [
       {
         path: 'phe-duyet',
         loadChildren: './views/admin/phe-duyet/phe-duyet.module#PheDuyetModuel'
+      },
+      {
+        path: 'topic',
+        loadChildren : './views/admin/toppic/topic.module#TopicModule'
       }
     ],
     canActivate: [AuthSercurity]

@@ -5,11 +5,16 @@ import { ViewComponent } from './view/view.component';
 import { ViewDetailsComponent } from './view-details/view-details.component';
 
 const routes: Routes = [
-  {
+     {
+     path: '',
+     redirectTo: 'admin/khoa-hoc/view'
+     } ,
+    {
       path: '',
       component:  KhoaHocComponent,
       data: {
-          title: 'khoa hoc'
+          title: 'khoa hoc',
+          path: 'admin/khoa-hoc/view'
       },
       children: [
           {

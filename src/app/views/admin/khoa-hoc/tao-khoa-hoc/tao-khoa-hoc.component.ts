@@ -1,3 +1,5 @@
+import { navigation } from './../../../../_nav';
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 
 @Component({
@@ -5,7 +7,8 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class TaoKhoaHocComponent implements OnInit {
-    constructor() { }
-
-    ngOnInit() { }
+    constructor(private router: Router) { }
+    ngOnInit() {
+        this.router.navigate(['/admin/khoa-hoc/tao-khoa-hoc/dashboard']);
+     }
 }

@@ -1,8 +1,11 @@
-import { Component } from '@angular/core';
-
+import { Component, OnInit } from '@angular/core';
 @Component({
   selector: 'app-dashboard',
   templateUrl: './full-layout.component.html'
 })
 
-export class FullLayoutComponent { }
+export class FullLayoutComponent implements OnInit {
+    constructor( ) { }
+  ngOnInit(): void {
+  }
+ }
