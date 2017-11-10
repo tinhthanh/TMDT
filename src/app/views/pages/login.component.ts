@@ -5,6 +5,7 @@ import { Component, OnInit } from '@angular/core';
 import { Authentication } from '../../_service/AuthenticationService';
 import { Router, ActivatedRoute } from '@angular/router';
 import {  AuthSercurity } from '../../_sercurity/AuthSercurity';
+import { ConfigValue } from '../../_models/ConfigValue';
 @Component({
   templateUrl: 'login.component.html',
   styleUrls: ['login.component.css']
@@ -13,12 +14,14 @@ export class LoginComponent implements OnInit {
   returnUrl: string;
   model: any= {};
   loading = false;
+  object_token: any = { };
   constructor(
     private router: Router,
     private route: ActivatedRoute,
     private auth: Authentication,
     private alertService: AlertService,
-    private authsercurity: AuthSercurity ) { }
+    private authsercurity: AuthSercurity,
+    private config: ConfigValue ) { }
   ngOnInit(): void {
     this.auth.logout();  // xoa tokem
     this.authsercurity.setCanActivate(false); // chna vao trang admin
@@ -31,7 +34,8 @@ export class LoginComponent implements OnInit {
  //    this.model.password = '123';
         console.log(this.auth.login(this.model.username, this.model.password).then(res => {
           this.authsercurity.setCanActivate(true);
-          this.chuyenTrang();
+           localStorage.setItem(this.config.token, res.access_token);
+           this.chuyenTrang();
           console.log(res);
        return res;
      }).catch( error => {

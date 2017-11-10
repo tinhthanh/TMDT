@@ -13,25 +13,12 @@ import 'rxjs/add/operator/toPromise';
 export class Authentication{
     private headers = new Headers();
     private user ;
-  constructor(private http: Http ,
+     object_token: any = {};
+      constructor(private http: Http ,
             private config: ConfigValue ){
         this.headers.append('Content-Type', 'application/json');
        }
      login(username: string, password: string): Promise<Token> {
-        //  return this.http.post(this.config.url_port+'/auth/login', JSON.stringify({ username: "admin", password: "123" }),{headers: this.headers})
-        //     .map(( response: Response ) => {
-        //      let user =  response.json();
-        //             if(user && user.access_token){
-        //                 localStorage.setItem(this.config.token_tmdt,JSON.stringify(user));
-        //                 this.http.get(this.config.url_port+'/api/whoami', this.getToken() ).map((response: Response) => response.json())
-        //                 .subscribe(users => { 
-        //                         user.profile = users ;
-        //                         console.log(user);
-        //                      localStorage.setItem(this.config.token_tmdt,JSON.stringify(user));
-        //                     });
-        //                }
-        //        return user;
-        //     });
       return this.http
         .post(this.config.url_port + '/auth/login', JSON.stringify({ username: username, password: password }) , {headers: this.headers})
         .toPromise()
@@ -64,13 +51,34 @@ export class Authentication{
       }
      logout() {
          localStorage.removeItem(this.config.token_tmdt);
+         localStorage.removeItem(this.config.token);
+      }
+      public isLogin(): boolean {
+         if ( localStorage.getItem(this.config.token) ) {
+            return true;
+         } else {
+          return false;
+         }
       }
       private getToken() {
                 // lấy token từ client
                 const currentUser = JSON.parse(localStorage.getItem(this.config.token_tmdt));
+                if ( currentUser ) {
                 if (currentUser && currentUser.access_token) {
                     const headers = new Headers({ 'Authorization': 'Bearer ' + currentUser.access_token });
                     return new RequestOptions({ headers: headers });
+                }
+              } else {
+                return new RequestOptions();
+              }
+            }
+            public token(): string {
+              this.object_token = JSON.parse(localStorage.getItem(this.config.token_tmdt));
+              console.log(this.object_token);
+                if ( this.object_token ) {
+                  return 'Bearer ' + this.object_token.access_token;
+                } else {
+                return null;
                 }
             }
      }
