@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes , RouterModule} from '@angular/router';
 import { TopicComponent } from './topic.component';
 import { TopicDashBoardComponent } from './dashboard/topic-dashboard.component';
+
 const routes: Routes = [
    {
         path: '',

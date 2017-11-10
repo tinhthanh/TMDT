@@ -7,113 +7,115 @@
         <div class="card-body">
             
             <div class="col-md-12">
-                    <button type="button" class="btn btn-success" data-toggle="modal" (click)="successModal.show()">
-                            Thêm mới Topic
-                          </button>
+
+              <button type="button" class="btn btn-primary" (click)="openModal(template)">Thêm Topic mới </button>
+ 
+<ng-template #template>
+
+  
+    <div class="modal-header">
+        <h4 class="modal-title pull-left">Thêm Topic mới</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+       
+          <form name="form" (ngSubmit)="f.form.valid && addTopic()" #f="ngForm" novalidate >
+              
+              <div class="form-group">
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="fa fa-asterisk"></i></span>
+                  <input class="form-control" name="topicName" [(ngModel)]="addtopic.topicName" #topicName="ngModel" required placeholder="Tên topic" type="text">
+                </div>
+              </div>
+    
+              <div class="form-group has-danger has-feedback">
+                      <label class="form-col-form-label" for="inputError2">Trạng Thái </label>
+                      <label class="switch switch-default switch-pill switch-primary-outline">
+                              <input type="checkbox" name="topicStatut" [(ngModel)]="addtopic.topicStatut" #topicStatut="ngModel" class="switch-input" checked>
+                              <span class="switch-label"></span>
+                              <span class="switch-handle"></span>
+                            </label>  
+                  </div>
+                  
+                  <div class="form-group has-danger has-feedback">
+                          <label class="form-col-form-label" for="inputError2">Mô tả </label>
+                          <textarea class="form-control" id="textarea-input" name="topicDescription" [(ngModel)]="addtopic.topicDescription" #topicDescription="ngModel" required  placeholder="Content.." rows="9"></textarea>
+                      </div>
+    
+              <div class="form-group form-actions">
+                <button class="btn btn-success" type="submit">Save changes</button>
+              </div>
+            </form>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary"  (click)="modalRef.hide()" >Close</button>
+                
+              </div>
+    
+       
+    
+    
+      </div>
+
+
+   
+</ng-template>
+ 
+<ng-template #templateNested>
 
 
 
-                          <div bsModal #editModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-                                <div class="modal-dialog modal-success" role="document">
-                                  <div class="modal-content">
-                                    <div class="modal-header">
-                                      <h4 class="modal-title"> Chỉnh sửa Topic</h4>
-                                      <button type="button" class="close" (click)="editModal.hide()" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                      </button>
-                                    </div>
-                                    <div class="modal-body">
-                                      
-                        
-                                            <form action="" method="post">
-                                                    
-                                                    <div class="form-group">
-                                                      <div class="input-group">
-                                                        <span class="input-group-addon"><i class="fa fa-asterisk"></i></span>
-                                                        <input class="form-control" name="topicName" placeholder="Tên topic" type="text">
-                                                      </div>
-                                                    </div>
-                        
-                                                    <div class="form-group has-danger has-feedback">
-                                                            <label class="form-col-form-label" for="inputError2">Trạng Thái </label>
-                                                            <label class="switch switch-default switch-pill switch-primary-outline">
-                                                                    <input type="checkbox" class="switch-input" checked>
-                                                                    <span class="switch-label"></span>
-                                                                    <span class="switch-handle"></span>
-                                                                  </label>  
-                                                        </div>
-                                                        
-                                                        <div class="form-group has-danger has-feedback">
-                                                                <label class="form-col-form-label" for="inputError2">Mô tả </label>
-                                                                <textarea class="form-control" id="textarea-input" name="textarea-input" placeholder="Content.." rows="9"></textarea>
-                                                            </div>
-                        
-                                                    <div class="form-group form-actions">
-                                                      <button class="btn btn-sm btn-success" type="submit">Submit</button>
-                                                    </div>
-                                                  </form>
-                        
-                        
-                                    </div>
-                                    <div class="modal-footer">
-                                      <button type="button" class="btn btn-secondary" (click)="editModal.hide()">Close</button>
-                                      <button type="button" class="btn btn-success">Save changes</button>
-                                    </div>
-                                  </div><!-- /.modal-content -->
-                                </div><!-- /.modal-dialog -->
-                              </div><!-- /.modal -->
-                              
+    <div class="modal-header">
+        <h4 class="modal-title pull-left">Chỉnh sửa Topic </h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef2.hide()">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+       
+          <form name="form" (ngSubmit)="f2.form.valid && editTopic()" #f2="ngForm" novalidate >
+              
+              <div class="form-group">
+                <div class="input-group">
+                  <span class="input-group-addon"><i class="fa fa-asterisk"></i></span>
+                  <input class="form-control" name="topicName" [(ngModel)]="edittopic.topicName" #topicName="ngModel" required placeholder="Tên topic" type="text">
+                </div>
+              </div>
+    
+              <div class="form-group has-danger has-feedback">
+                      <label class="form-col-form-label" for="inputError2">Trạng Thái </label>
+                      <label class="switch switch-default switch-pill switch-primary-outline">
+                              <input type="checkbox" name="topicStatut" [(ngModel)]="edittopic.topicStatut" #topicStatut="ngModel" class="switch-input" checked>
+                              <span class="switch-label"></span>
+                              <span class="switch-handle"></span>
+                            </label>  
+                  </div>
+                  
+                  <div class="form-group has-danger has-feedback">
+                          <label class="form-col-form-label" for="inputError2">Mô tả </label>
+                          <textarea class="form-control" id="textarea-input" name="topicDescription" [(ngModel)]="edittopic.topicDescription" #topicDescription="ngModel" required  placeholder="Content.." rows="9"></textarea>
+                      </div>
+    
+              <div class="form-group form-actions">
+                <button class="btn btn-success" type="submit">Save changes</button>
+              </div>
+            </form>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary"  (click)="modalRef2.hide()">Close</button>
+                
+              </div>
+    
+       
+    
+    
+      </div>
+</ng-template>
 
-                          
-<div bsModal #successModal="bs-modal" class="modal fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-success" role="document">
-          <div class="modal-content">
-            <div class="modal-header">
-              <h4 class="modal-title">Thêm Mới Topic</h4>
-              <button type="button" class="close" (click)="successModal.hide()" aria-label="Close">
-                <span aria-hidden="true">&times;</span>
-              </button>
-            </div>
-            <div class="modal-body">
               
 
-                    <form action="" method="post">
-                            
-                            <div class="form-group">
-                              <div class="input-group">
-                                <span class="input-group-addon"><i class="fa fa-asterisk"></i></span>
-                                <input class="form-control" name="topicName" placeholder="Tên topic" type="text">
-                              </div>
-                            </div>
-
-                            <div class="form-group has-danger has-feedback">
-                                    <label class="form-col-form-label" for="inputError2">Trạng Thái </label>
-                                    <label class="switch switch-default switch-pill switch-primary-outline">
-                                            <input type="checkbox" class="switch-input" checked>
-                                            <span class="switch-label"></span>
-                                            <span class="switch-handle"></span>
-                                          </label>  
-                                </div>
-                                
-                                <div class="form-group has-danger has-feedback">
-                                        <label class="form-col-form-label" for="inputError2">Mô tả </label>
-                                        <textarea class="form-control" id="textarea-input" name="textarea-input" placeholder="Content.." rows="9"></textarea>
-                                    </div>
-
-                            <div class="form-group form-actions">
-                              <button class="btn btn-sm btn-success" type="submit">Submit</button>
-                            </div>
-                          </form>
 
 
-            </div>
-            <div class="modal-footer">
-              <button type="button" class="btn btn-secondary" (click)="successModal.hide()">Close</button>
-              <button type="button" class="btn btn-success">Save changes</button>
-            </div>
-          </div><!-- /.modal-content -->
-        </div><!-- /.modal-dialog -->
-      </div><!-- /.modal -->
 
             </div>
             <table class="table table-bordered">
@@ -136,7 +138,7 @@
                     </td>
                     <td>
                         <button class="btn btn-outline-danger" type="button"><i class="fa fa-remove"></i></button>
-                        <button class="btn btn-outline-success" type="button" data-toggle="modal" (click)="editModal.show()" > <i class="fa fa-edit"></i></button>
+                        <button class="btn btn-outline-success" type="button" data-toggle="modal" (click)="openModal2(templateNested)" > <i class="fa fa-edit"></i></button>
                     </td>
                   </tr>
                   <tr>

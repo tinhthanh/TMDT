@@ -21,8 +21,6 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
 import { TabsComponent } from './tabs.component';
 
 import { MyComponent } from './my.component';
- 
-
 
 
 // Components Routing
