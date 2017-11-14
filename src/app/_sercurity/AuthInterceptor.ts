@@ -15,7 +15,6 @@ export class AuthInterceptor implements HttpInterceptor {
      if ( authHeader ) {
        const authReq = req.clone({
           headers: req.headers.set('Authorization', 'Bearer ' + authHeader)       });
-          console.log(' dis me ');
         return next.handle(authReq);
         } else {
     // Pass on the cloned request instead of the original request.

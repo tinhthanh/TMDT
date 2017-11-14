@@ -1,3 +1,6 @@
+<app-token-out (fucEvent)="tokenEvent($event)" [isShow]="isShow" ></app-token-out>
+ <!-- <button (click)="test()" type="button" class="btn btn-default">button</button> -->
+ 
 <div class="row">
     <div class="col-lg-12">
       <div class="card">
@@ -62,7 +65,7 @@
    
 </ng-template>
  
-<ng-template #templateNested>
+<ng-template   #templateNested>
 
 
 
@@ -72,9 +75,14 @@
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
-      <div class="modal-body">
-       
-          <form name="form" (ngSubmit)="f2.form.valid && editTopic()" #f2="ngForm" novalidate >
+      <div  class="modal-body">
+           
+           <div *ngIf="isprocess" class="alert alert-success">
+             <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+             <strong>Loading....</strong> Xin vui lòng chờ ...
+           </div>
+           
+          <form  *ngIf="!isprocess" name="form" (ngSubmit)="f2.form.valid && editTopic()" #f2="ngForm" novalidate >
               
               <div class="form-group">
                 <div class="input-group">
@@ -129,50 +137,20 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr>
-                    <td>Pompeius René</td>
-                    <td>2012/01/01</td>
-                    <td>Member</td>
-                    <td>
-                      <span class="badge badge-success">Active</span>
-                    </td>
-                    <td>
-                        <button class="btn btn-outline-danger" type="button"><i class="fa fa-remove"></i></button>
-                        <button class="btn btn-outline-success" type="button" data-toggle="modal" (click)="openModal2(templateNested)" > <i class="fa fa-edit"></i></button>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Paĉjo Jadon</td>
-                    <td>2012/02/01</td>
-                    <td>Staff</td>
-                    <td>
-                      <span class="badge badge-danger">Banned</span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Micheal Mercurius</td>
-                    <td>2012/02/01</td>
-                    <td>Admin</td>
-                    <td>
-                      <span class="badge badge-secondary">Inactive</span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Ganesha Dubhghall</td>
-                    <td>2012/03/01</td>
-                    <td>Member</td>
-                    <td>
-                      <span class="badge badge-warning">Pending</span>
-                    </td>
-                  </tr>
-                  <tr>
-                    <td>Hiroto Šimun</td>
-                    <td>2012/01/21</td>
-                    <td>Staff</td>
-                    <td>
-                      <span class="badge badge-success">Active</span>
-                    </td>
-                  </tr>
+                    <tr *ngFor="let temp of lists ">
+                        <td>{{ temp.topicName }}</td>
+                        <td>{{temp.topicDescription}}</td>
+                        <td>{{temp.topicStatut}}</td>
+                        <td>
+                          <span class="badge badge-success">Active</span>
+                        </td>
+                        <td>
+                            <button class="btn btn-outline-danger" type="button"><i class="fa fa-remove"></i></button>
+                            <button class="btn btn-outline-success" type="button" data-toggle="modal" (click)="openModal2(templateNested,temp.topicID )" > <i class="fa fa-edit"></i></button>
+                        </td>
+                      </tr>
+                
+                
                 </tbody>
               </table>
           <nav>

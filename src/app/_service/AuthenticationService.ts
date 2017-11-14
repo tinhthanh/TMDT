@@ -1,3 +1,4 @@
+import { HttpErrorResponse } from '@angular/common/http';
 import { Token } from './../_models/Token';
 import { Injectable } from '@angular/core';
 import { Http, Headers, Response, RequestOptions } from '@angular/http';
@@ -14,6 +15,7 @@ export class Authentication{
     private headers = new Headers();
     private user ;
      object_token: any = {};
+     private isFlat  = false;
       constructor(private http: Http ,
             private config: ConfigValue ){
         this.headers.append('Content-Type', 'application/json');
@@ -33,10 +35,7 @@ export class Authentication{
                          .then( resv => resv.json())
                          .then(
                               resv => {
-                                console.log(resv);
-                                user.profile =  resv;
-                                console.log(user);
-                                localStorage.setItem(this.config.token_tmdt, JSON.stringify(user));
+                                localStorage.setItem(this.config.token_tmdt, JSON.stringify(resv));
                               }
                          );
                  } else {
@@ -81,4 +80,19 @@ export class Authentication{
                 return null;
                 }
             }
-     }
+            public refresh(username: string , password: string): Promise<boolean> {
+              this.isFlat = false;
+              return this.http
+              .post(this.config.url_port + '/auth/login', JSON.stringify({ username: username, password: password }) ,
+               {headers: this.headers})
+              .toPromise()
+              .then(res => {
+                    const user =  res.json();
+                        localStorage.setItem(this.config.token, user.access_token)
+                       if (user &&  user.access_token ) {
+                         this.isFlat = true;
+                       }
+                     return this.isFlat } )
+              .catch(this.handleError);
+           }
+                 }

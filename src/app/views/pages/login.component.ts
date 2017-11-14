@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
        return res;
      }).catch( error => {
          console.log(error);
-        if (error.status === 500) {
+        if (error.status === 403) {
           // console.log('Mat khau khong dung');
           this.alertService.erros('Tài khoản hoặc mặt khẩu không đúng');
            this.loading = false;
