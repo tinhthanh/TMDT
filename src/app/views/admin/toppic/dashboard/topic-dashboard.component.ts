@@ -5,8 +5,7 @@ import { ModalDirective } from 'ngx-bootstrap/modal/modal.component';
 
 import { ConfigValue } from '../../../../_models/ConfigValue';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
-import { HttpClient } from '@angular/common/http';
-import { HttpHeaders, HttpErrorResponse } from '@angular/common/http';
+import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { AdminTopicService } from '../../../../_service/admin-topic/admin-topic.service';
  @Component({
@@ -18,9 +17,10 @@ export class TopicDashBoardComponent implements OnInit {
    public addtopic: any = {};
    public isShow = false;
    public isprocess = false;
+   private id: string;
     modalRef: BsModalRef;
     modalRef2: BsModalRef;
-     token: any = {};
+    modaldelete: BsModalRef;
     public lists;
     constructor(private http: HttpClient,
       private config: ConfigValue,
@@ -42,6 +42,9 @@ export class TopicDashBoardComponent implements OnInit {
                 console.log(' token het hang ');
                 this.isShow = true;
               }
+              if ( err.status === 0 ) {
+                console.log(' không kết nối dược với service')
+              }
             }
           });
       } else {
@@ -49,25 +52,126 @@ export class TopicDashBoardComponent implements OnInit {
         console.log('khong co token');
       }
     }
+    public deleteTopic() {
+      this.topicservice.deleteTopic(this.id).subscribe( res => {
+        console.log(res)
+        for ( let i = 0  ; i < this.lists.length ; i++ ) {
+          if ( this.lists[i].topicID === this.id ) {
+            this.lists.splice(i, 1 );
+          }
+        }
+      } , ( err: HttpErrorResponse) => {
+         if ( err.error instanceof Error ) {
+           console.log('erro client ' )
+         } else {
+           console.log( 'erro service ')
+           if ( err.status === 401 ) {
+             console.log( 'token hết hạng')
+             this.isShow = true ;
+           }
+           if ( err.status === 0 ) {
+             console.log(' không kết nối được với máy chuể ')
+           }
+           if ( err.status === 400 ) {
+             console.log( ' bad reqest ')
+           }
+           console.log(err.message)
+
+          }
+      }  )
+      this.modaldelete.hide();
+    }
+    openModalRemove(template: TemplateRef<any> , id: string) {
+      this.id = id ;
+      this.modaldelete = this.modalService.show(template , { class: 'modal-success' });
+    }
     addTopic() {
-      console.log('----add.----');
-        console.log(this.addtopic.topicName, this.addtopic.topicDescription, this.addtopic.topicStatut);
+      if ( ! this.addtopic.topicStatut ) {
+          this.addtopic.topicStatut = 1;
+      } else {
+        this.addtopic.topicStatut = 0;
+       }
+         this.addtopic.topicID =  null;
+        this.topicservice.createTopic(this.addtopic).subscribe(
+          res =>  {
+            console.log(res);
+            if ( res && res.topicID ) {
+              this.lists.push(res);
+            } else {
+              console.log('erro response ');
+            }
+          } ,  (err: HttpErrorResponse) => {
+             if ( err.error instanceof Error ) {
+               console.log('erro client  ') ;
+             } else {
+              if ( err.status === 401 ) {
+                console.log(' token het hang ');
+                this.isShow = true;
+              }
+              if ( err.status === 0 ) {
+                console.log(' không kết nối dược với service')
+              }
+              if  ( err.status === 400 ) {
+                console.log(' bad request ') ;
+              }
+             }
+            //  this.isShow = !this.isShow
+          }
+        );
+
       this.addtopic = {};
       this.modalRef.hide();
     }
 
     editTopic(): void {
       console.log('----edit.----');
+      if ( this.edittopic.topicStatut  === false  )  {
+        this.edittopic.topicStatut = 0;
+      } else {
+        this.edittopic.topicStatut = 1 ;
+      }
       console.log(this.edittopic.topicName, this.edittopic.topicDescription, this.edittopic.topicStatut);
+      console.log(this.edittopic)
+      this.edittopic.topicID = this.id ;
+       this.topicservice.updateTopic(this.id, this.edittopic).subscribe( res => {
+       // let topic = this.findById(this.id) ;
+            // topic = res;
+             for ( let i = 0 ; i < this.lists.length ; i++) {
+                if (this.lists[i].topicID === this.id ) {
+                  console.log(this.lists[i]);
+                  this.lists[i] = res;
+                }
+             }
+       }, ( err: HttpErrorResponse) => {
+            if ( err.error instanceof Error ) {
+              console.log('erro clinet ')
+            } else {
+              if ( err.status === 401 ) {
+                console.log(' token het hang ');
+                this.isShow = true;
+              }
+              if ( err.status === 0 ) {
+                console.log(' không kết nối dược với service')
+              }
+              if ( err.status === 400 ) {
+                console.log(' bad request')
+              }
+            }
+       });
+       this.modalRef2.hide();
   }
 // lay ở client
-  // private findById(id: string): any {
-  //     return  this.lists.filter( temp => temp.topicID === id );
-  // }
+  private findById(id: string): any {
+      return  this.lists.filter( temp => temp.topicID === id );
+  }
+  // them topic
     openModal(template: TemplateRef<any>) {
         this.modalRef = this.modalService.show(template, { class: 'modal-success' });
       }
+
+      // edit topic
       openModal2(template: TemplateRef<any>, temp: string) {
+        this.id = temp ;
          this.isprocess = true;
         this.topicservice.getById(temp).subscribe( data => {
         this.edittopic = data;
@@ -78,11 +182,11 @@ export class TopicDashBoardComponent implements OnInit {
           console.log(' erro client ') ;
         }else {
           if ( err.status === 401 ) {
-            console.log(this.isShow + 'firstt');
+            console.log(' token het hang ');
             this.isShow = true;
-            console.log(this.isShow + 'end')
-            console.log('token het hang');
-            console.log(err.error);
+          }
+          if ( err.status === 0 ) {
+            console.log(' không kết nối dược với service')
           }
         }
       } );

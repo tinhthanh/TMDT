@@ -14,8 +14,6 @@
               <button type="button" class="btn btn-primary" (click)="openModal(template)">Thêm Topic mới </button>
  
 <ng-template #template>
-
-  
     <div class="modal-header">
         <h4 class="modal-title pull-left">Thêm Topic mới</h4>
         <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef.hide()">
@@ -36,7 +34,7 @@
               <div class="form-group has-danger has-feedback">
                       <label class="form-col-form-label" for="inputError2">Trạng Thái </label>
                       <label class="switch switch-default switch-pill switch-primary-outline">
-                              <input type="checkbox" name="topicStatut" [(ngModel)]="addtopic.topicStatut" #topicStatut="ngModel" class="switch-input" checked>
+                              <input type="checkbox" name="topicStatut" [checked]="false" [(ngModel)]="addtopic.topicStatut" #topicStatut="ngModel" class="switch-input" checked>
                               <span class="switch-label"></span>
                               <span class="switch-handle"></span>
                             </label>  
@@ -63,6 +61,23 @@
 
 
    
+</ng-template>
+<ng-template #deletetopic >
+    
+  
+    
+    <div class="alert alert-success">
+      <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+      <strong> Bạn có muốn xóa !</strong> 
+      <button type="button"  (click)="deleteTopic()" class="btn btn-info"> Xóa</button>
+      
+      <button type="button" (click)="modaldelete.hide()" class="btn btn-success">Đóng </button>
+    </div>
+    
+    
+    
+    
+
 </ng-template>
  
 <ng-template   #templateNested>
@@ -145,7 +160,7 @@
                           <span class="badge badge-success">Active</span>
                         </td>
                         <td>
-                            <button class="btn btn-outline-danger" type="button"><i class="fa fa-remove"></i></button>
+                            <button class="btn btn-outline-danger" type="button" (click)="openModalRemove(deletetopic, temp.topicID)" ><i class="fa fa-remove"></i></button>
                             <button class="btn btn-outline-success" type="button" data-toggle="modal" (click)="openModal2(templateNested,temp.topicID )" > <i class="fa fa-edit"></i></button>
                         </td>
                       </tr>
