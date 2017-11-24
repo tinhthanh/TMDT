@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-    selector: 'home-wowslider',
+    selector: 'app-home-wowslider',
     templateUrl: './home-wowslider.component.html'
 })
 

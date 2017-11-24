@@ -30,7 +30,8 @@ export class TopicDashBoardComponent implements OnInit {
       private modalService: BsModalService ) { }
     ngOnInit() {
       if ( this.auth.isLogin() ) {
-          this.topicservice.getAllTopic().subscribe( data => {
+          this.topicservice.getAllTopic()
+          .subscribe( data => {
             console.log(data);
             this.lists = data ;
           }, (err: HttpErrorResponse) => {

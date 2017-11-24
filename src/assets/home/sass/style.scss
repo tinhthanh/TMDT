@@ -1,10 +1,14 @@
 @import "font";
 @import "color";
-@import "basic";
-@import "text-hover-effects/effects";
-@import "navbar";
-@import "snip-image";
-@import "section";
-@import "footer";
-@import "cd-top";
+@import "effect";
 
+body, html {
+	font-family: $font2;
+	font-size: 16px;
+}
+@import "sign";
+@import "navbar";
+@import "index";
+@import "list-course";
+@import "course";
+@import "footer";

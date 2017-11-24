@@ -1,13 +1,17 @@
 
-	<link rel="stylesheet" type="text/css" href="/assets/bootstrap/css/bootstrap.min.css">
+	<link rel="stylesheet" href="/assets/bootstrap/css/bootstrap.min.css">
 	<link rel="stylesheet" type="text/css" href="/assets/home/fonts/fontawesome/css/font-awesome.min.css">
-	<link rel="stylesheet" type="text/css" href="/assets/home/css/animate.css">
-	<link rel="stylesheet" type="text/css" href="/assets/home/css/slide/style.css">
-    <link rel="stylesheet" type="text/css" href="/assets/home/css/style.css">
-    
-    <home-navbar></home-navbar>
-    <home-wowslider></home-wowslider>
+	<link rel="stylesheet" href="/assets/home/css/style.css">
+    <app-home-navbar></app-home-navbar>
+    <app-home-wowslider></app-home-wowslider>
 
 <router-outlet></router-outlet>
 
-<home-footer></home-footer>
+<app-home-footer></app-home-footer>
+
+<div class="ifooter text-right">
+    <div class="container">
+        <h6>Được thiết kế bởi 3TPL &copy; 2017</h6>
+    </div>
+</div>
+<a  *ngIf="navIsFixed" (click)="scrollTop()" style="display: block" class="cd-top cd-is-visible cd-fade-out">Lên đầu</a>

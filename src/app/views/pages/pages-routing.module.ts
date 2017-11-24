@@ -1,3 +1,4 @@
+import { HomePagesComponent } from './home-pages/home-pages.component';
 
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -43,6 +44,11 @@ const routes: Routes = [
         }
       }
     ]
+  },
+  {
+    path:  'home-pages',
+    component: HomePagesComponent,
+    loadChildren: './home-pages/home-pages.module#HomePagesModule'
   }
 ];
 

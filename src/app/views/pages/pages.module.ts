@@ -1,3 +1,4 @@
+import { HomePagesComponent } from './home-pages/home-pages.component';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { P500Component } from './500.component';
@@ -17,7 +18,8 @@ import { AlertComponent } from '../../_notification/alert.component';
     RegisterComponent,
     RoleComponent,
     LoginComponent,
-    AlertComponent
+    AlertComponent,
+    HomePagesComponent
   ]
 })
 export class PagesModule { }
