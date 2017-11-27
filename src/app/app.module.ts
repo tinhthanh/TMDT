@@ -76,6 +76,7 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
 import { ChartsModule } from 'ng2-charts/ng2-charts';
 import { CKEditorModule } from 'ng2-ckeditor';
 
+
 @NgModule({
   imports: [
     CKEditorModule,

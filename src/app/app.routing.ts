@@ -62,6 +62,10 @@ export const routes: Routes = [
       {
         path: 'topic',
         loadChildren : './views/admin/toppic/topic.module#TopicModule'
+      },
+      {
+        path: 'huong-dan' ,
+        loadChildren: './views/admin/huong-dan/huong-dan.module#HuongDanModule'
       }
     ],
     canActivate: [AuthSercurity]

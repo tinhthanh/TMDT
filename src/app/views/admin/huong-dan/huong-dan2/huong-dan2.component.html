@@ -1,0 +1,44 @@
+
+
+<div class="container">
+    <div class="bs3-col-4">
+        
+        <form (ngSubmit)="addTopic()" [formGroup]="topic" >
+            <legend>Form title</legend>
+        
+            <div class="form-group">
+                <label for="">label</label>
+                <input  formControlName="topicName" type="text" class="form-control" id="" placeholder="Input field">
+                <input  formControlName="topicDescription" type="text" class="form-control" id="" placeholder="Input field">
+                <input  formControlName="topicStatut" type="text" class="form-control" id="" placeholder="Input field">
+            </div>
+        
+             <pre>{{ topic.value  | json }}</pre>
+        
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+        
+    </div>
+</div>
+
+
+<table class="table table-hover">
+    <thead>
+        <tr>
+            <th> id </th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item  of lists ">
+            <td> {{ item.topicName}}  </td>
+        </tr>
+    </tbody>
+</table>
+
+<div class="alert">
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+    <strong>Title!</strong>  {{sms}}
+</div>
+
+<!-- <button (click)="login()"> login  </button> -->
+<button (click)="callService()"> call service </button>

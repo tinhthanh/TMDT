@@ -29,7 +29,7 @@ export class QuenMatKhauComponent implements OnInit {
         });
      }
    public forgetSubmit() {
-       this.button = 'Chờ trong giây lác..'
+       this.button = 'Chờ trong giây lác..';
        if ( this.forgetGroup.valid ) {
            console.log(this.forgetGroup.value)
            console.log('ngon')
@@ -55,7 +55,7 @@ export class QuenMatKhauComponent implements OnInit {
        } else {
            console.log('hieu du dieu')
        }
-       this.button = 'Tiếp tục'
+       this.button = 'Tiếp tục';
    }
     ngOnInit() { }
 }
