@@ -5,7 +5,9 @@ import { Component, OnInit } from '@angular/core';
 })
 
 export class HuongDan1Component implements OnInit {
-    constructor() { }
-
-    ngOnInit() { }
+    ngoc: any;
+    constructor() {  }
+    ngOnInit() {
+        this.ngoc = 'bit xe may';
+     }
 }

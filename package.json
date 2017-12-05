@@ -24,7 +24,7 @@
     "@angular/http": "4.4.4",
     "@angular/platform-browser": "4.4.4",
     "@angular/platform-browser-dynamic": "4.4.4",
-    "@angular/platform-server": "^4.0.0",
+    "@angular/platform-server": "^4.4.6",
     "@angular/router": "4.4.4",
     "@angular/upgrade": "4.4.4",
     "chart.js": "2.7.0",
