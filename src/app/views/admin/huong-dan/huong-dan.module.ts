@@ -27,6 +27,6 @@ import { HuongDan1Component } from 'app/views/admin/huong-dan/huong-dan1/huong-d
         useClass: AuthInterceptor,
         multi: true,
       },
-      HongDanService
+      HongDanService ]
 })
 export class HuongDanModule { }
