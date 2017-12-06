@@ -13,7 +13,7 @@
               <form name="form" (ngSubmit)="f.form.valid && doSubmit()" #f="ngForm" novalidate > 
               <div class="input-group mb-3">
                 <span  class="input-group-addon"><i class="icon-user"></i></span>
-                <input [ngClass]="{ 'input-error': f.submitted && !username.valid}" type="email" name="username" [(ngModel)]="model.username" #username="ngModel"  required  type="text" class="form-control" placeholder="Username">
+                <input [ngClass]="{ 'input-error': f.submitted && !email.valid}" type="email" name="email" [(ngModel)]="model.email" #email="ngModel"  required  type="text" class="form-control" placeholder="Email">
               </div>
               <div class="input-group mb-4">
                 <span class="input-group-addon"><i class="icon-lock"></i></span>

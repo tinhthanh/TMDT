@@ -11,6 +11,7 @@ export class KichHoatComponent implements OnInit {
     private obj: any = {} ;
     forgetPass: FormGroup
     ms: string
+    private key: any = {};
     constructor( private router: ActivatedRoute ,
         private routes: Router,
       private serviceHome: HomePagesService
@@ -37,7 +38,7 @@ export class KichHoatComponent implements OnInit {
                public forgetPassSubmit() {
                    if ( this.forgetPass.valid ) {
                        console.log('ngon');
-                       this.obj.passwordnew = this.forgetPass.value.passwordnew;
+                       this.obj.newPassword = this.forgetPass.value.passwordnew;
                        console.log(this.forgetPass.value);
                        console.log(this.obj)
             this.serviceHome.forgetPass(this.obj).subscribe(
@@ -69,17 +70,20 @@ export class KichHoatComponent implements OnInit {
                    }
                }
     ngOnInit(): void {
-      //  const key  = this.router.snapshot.params['key'];
+        const key  = this.router.snapshot.params['key'];
+        console.log(key);
  if ( this.router.snapshot.queryParams['key']) {
-    this.serviceHome.homeActiveLink(this.router.snapshot.queryParams['key'] ).subscribe(
+      this.key.key  =  this.router.snapshot.queryParams['key'] ;
+    this.serviceHome.homeActiveLink( this.key ).subscribe(
         data => {
+              this.routes.navigate(['/pages/home-pages/dang-nhap']);
             console.log(data);
         },
         (err: HttpErrorResponse ) => {
              console.log(err)
         }
    );
-  this.routes.navigate(['/pages/home-pages/dang-nhap']);
+
    }
    if ( this.router.snapshot.queryParams['key-change']) {
        this.quen_mk = true;

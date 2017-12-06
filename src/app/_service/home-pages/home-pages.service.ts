@@ -7,7 +7,7 @@ export class HomePagesService {
        private  config: ConfigValue
      ) { }
     public homeLogin( user: any): any {
-        return this.http.post(this.config.l_port + '/auth', user);
+        return this.http.post(this.config.url_port + '/auth/login', user);
     }
     public homeRegister(user: any ): any {
      return this.http.post(this.config.l_port + '/user', user);
@@ -19,6 +19,6 @@ export class HomePagesService {
          return this.http.get(this.config.l_port + '/user/token_reset_password?email=' + email );
     }
     public forgetPass( obj: any ): any {
-    return this.http.post(this.config.l_port + '/user/password_reset', obj );
+    return this.http.patch(this.config.l_port + '/user/password_reset', obj );
     }
 }

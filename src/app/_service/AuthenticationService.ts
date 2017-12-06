@@ -22,15 +22,15 @@ export class Authentication{
        }
      login(username: string, password: string): Promise<Token> {
       return this.http
-        .post(this.config.url_port + '/auth/login', JSON.stringify({ username: username, password: password }) , {headers: this.headers})
+        .post(this.config.url_port + '/auth/login', JSON.stringify({ email: username, password: password }) , {headers: this.headers})
         .toPromise()
         .then(res => {
               const user =  res.json();
                  if (user &&  user.access_token ) {
                    //   localStorage.setItem(this.config.token_tmdt, JSON.stringify(user)) ;
-                   const headers = new Headers({ 'Authorization': 'Bearer ' + user.access_token });
+                   const headers = new Headers({ 'Authorization': user.access_token });
                     const hd =  new RequestOptions({ headers: headers });
-                      this.http.get(this.config.url_port + '/api/whoami', hd)
+                      this.http.get(this.config.url_port + '/user/info', hd)
                          .toPromise()
                          .then( resv => resv.json())
                          .then(
@@ -59,23 +59,23 @@ export class Authentication{
           return false;
          }
       }
-      private getToken() {
-                // lấy token từ client
-                const currentUser = JSON.parse(localStorage.getItem(this.config.token_tmdt));
-                if ( currentUser ) {
-                if (currentUser && currentUser.access_token) {
-                    const headers = new Headers({ 'Authorization': 'Bearer ' + currentUser.access_token });
-                    return new RequestOptions({ headers: headers });
-                }
-              } else {
-                return new RequestOptions();
-              }
-            }
+      // private getToken() {
+      //           // lấy token từ client
+      //           const currentUser = JSON.parse(localStorage.getItem(this.config.token_tmdt));
+      //           if ( currentUser ) {
+      //           if (currentUser && currentUser.access_token) {
+      //               const headers = new Headers({ 'Authorization': currentUser.access_token });
+      //               return new RequestOptions({ headers: headers });
+      //           }
+      //         } else {
+      //           return new RequestOptions();
+      //         }
+      //       }
             public token(): string {
               this.object_token = JSON.parse(localStorage.getItem(this.config.token_tmdt));
               console.log(this.object_token);
                 if ( this.object_token ) {
-                  return 'Bearer ' + this.object_token.access_token;
+                  return  this.object_token.access_token;
                 } else {
                 return null;
                 }
@@ -83,7 +83,7 @@ export class Authentication{
             public refresh(username: string , password: string): Promise<boolean> {
               this.isFlat = false;
               return this.http
-              .post(this.config.url_port + '/auth/login', JSON.stringify({ username: username, password: password }) ,
+              .post(this.config.url_port + '/auth/login', JSON.stringify({ email: username, password: password }) ,
                {headers: this.headers})
               .toPromise()
               .then(res => {

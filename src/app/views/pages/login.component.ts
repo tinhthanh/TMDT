@@ -32,7 +32,8 @@ export class LoginComponent implements OnInit {
      this.loading = true;
   //   this.model.username = 'admin';
  //    this.model.password = '123';
-        console.log(this.auth.login(this.model.username, this.model.password).then(res => {
+   console.log(this.model);
+        console.log(this.auth.login(this.model.email, this.model.password).then(res => {
           this.authsercurity.setCanActivate(true);
            localStorage.setItem(this.config.token, res.access_token);
            this.chuyenTrang();
@@ -46,6 +47,10 @@ export class LoginComponent implements OnInit {
            this.loading = false;
            return null;
         }
+        if ( error.status ===  0 ) {
+          this.alertService.erros('Service Fail !')
+        }
+        this.loading = false;
      }
          ) );
     //  this.returnUrl = this.route.snapshot.queryParams['returnUrl'] || '/';

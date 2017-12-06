@@ -4,6 +4,7 @@ import { FormGroup, FormControl, Validators } from '@angular/forms';
 import { HomePagesService } from '../../../../_service/home-pages/home-pages.service';
 import { ConfigValue } from '../../../../_models/ConfigValue';
 import { Router } from '@angular/router';
+import { Title } from '@angular/platform-browser';
 @Component({
     templateUrl: 'dang-nhap.component.html',
     styleUrls: [ 'dang-nhap.component.css']
@@ -14,9 +15,11 @@ export class DangNhapComponent implements OnInit {
     ms: string ;
     constructor( private serviceHome: HomePagesService,
         private route: Router ,
-    private  config: ConfigValue ) { }
+    private  config: ConfigValue,
+private title: Title  ) { }
 
     ngOnInit() {
+        this.title.setTitle('Đăng nhập');
         if (localStorage.getItem(this.config.l_token) ) {
             this.route.navigate(['/'])
           }
@@ -39,13 +42,13 @@ export class DangNhapComponent implements OnInit {
             console.log(this.loginGroup.value);
             this.serviceHome.homeLogin(this.loginGroup.value).subscribe( data => {
                 console.log(data);
-                localStorage.setItem(this.config.l_token, data.token);
+                localStorage.setItem(this.config.token, data.access_token);
                 this.route.navigate(['/'])
              }, (err: HttpErrorResponse) => {
                   if ( err.error instanceof Error ) {
                       console.log('erro clien side ')
                   } else {
-                      if ( err.status === 0 ){
+                      if ( err.status === 0 ) {
                           console.log('Không kết nối internet ')
                           this.ms = 'không có internet thử lại ';
                       }

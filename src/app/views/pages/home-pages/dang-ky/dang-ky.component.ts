@@ -1,3 +1,4 @@
+import { Title } from '@angular/platform-browser';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { slideInDownAnimation } from './../../../../animations';
@@ -21,7 +22,8 @@ export class DangKyComponent implements OnInit {
      success =  false;
      loading = true ;
     constructor( private serviceHome: HomePagesService,
-    private router: Router ) {
+    private router: Router ,
+private title: Title ) {
         this.register =  new FormGroup({
              userName: new FormControl('', [
             Validators.required
@@ -50,7 +52,9 @@ export class DangKyComponent implements OnInit {
             this.passwordMatchValidator
     )
      }
-    ngOnInit() { }
+    ngOnInit() {
+        this.title.setTitle('Đăng ký tài khoãn')
+    }
     public registerSubmit() {
         this.loading = false ;
         if ( this.register.valid ) {
@@ -99,3 +103,4 @@ export class DangKyComponent implements OnInit {
            ? null : {'mismatch': true};
      }
 }
+
