@@ -1,3 +1,4 @@
+import { HttpClientModule } from '@angular/common/http';
 
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
@@ -17,6 +18,7 @@ import {
   SimpleLayoutComponent,
   HomeLayoutComponent
 } from './containers';
+
 
 export const routes: Routes = [
   {
@@ -107,6 +109,7 @@ export const routes: Routes = [
     RouterModule.forRoot(routes
       // , { enableTracing: true }
     ),
+    HttpClientModule
   ],
   providers: [
     Authentication,

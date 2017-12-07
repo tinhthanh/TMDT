@@ -87,7 +87,7 @@ import { CKEditorModule } from 'ng2-ckeditor';
     TabsModule.forRoot(),
     ChartsModule,
     CommonModule ,
-    FormsModule,
+    FormsModule
   ],
   declarations: [
     AppComponent,
@@ -102,7 +102,7 @@ import { CKEditorModule } from 'ng2-ckeditor';
   bootstrap: [ AppComponent ]
 })
 export class AppModule {
-  constructor(router: Router) {
-    console.log('Routes: ', JSON.stringify(router.config, undefined, 2));
-  }
+  // constructor(router: Router) {
+  //   console.log('Routes: ', JSON.stringify(router.config, undefined, 2));
+  // }
  }

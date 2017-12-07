@@ -1,3 +1,22 @@
+
+<div class="index">
+    <ngx-carousel
+    [inputs]="carouselOne"
+    (carouselLoad)="myfunc($event)">
+      <ngx-item NgxCarouselItem>
+        <img alt="First slide" class="d-block w-100" src="assets/home/images/slide/images/slide1.jpg">
+      </ngx-item>
+      <ngx-item NgxCarouselItem>
+        <img alt="Second slide" class="d-block w-100" src="assets/home/images/slide/images/slide2.jpg">
+      </ngx-item>
+      <ngx-item NgxCarouselItem>
+        <img alt="Third slide" class="d-block w-100" src="assets/home/images/slide/images/slide3.jpg">
+      </ngx-item>
+      <button NgxCarouselPrev class='leftRs'>&lt;</button>
+      <button NgxCarouselNext class='rightRs'>&gt;</button>
+</ngx-carousel>
+
+</div>
 <div class="index">
     <section class="section-1">
         <div class="container">
