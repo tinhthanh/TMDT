@@ -20,9 +20,7 @@ private title: Title  ) { }
 
     ngOnInit() {
         this.title.setTitle('Đăng nhập');
-        if (localStorage.getItem(this.config.l_token) ) {
-            this.route.navigate(['/'])
-          }
+        // localStorage.romeve(this.config.token);
         this.loginGroup = new FormGroup({
             email: new FormControl('', [
                 Validators.required,

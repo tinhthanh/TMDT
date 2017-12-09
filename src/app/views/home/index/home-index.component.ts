@@ -1,12 +1,13 @@
+import { slideInDownAnimation } from './../../../animations';
+import { Title } from '@angular/platform-browser';
 import { ConfigValue } from './../../../_models/ConfigValue';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders, HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 
 import { NgxCarousel } from 'ngx-carousel';
 @Component({
-    selector: 'app-post',
-    templateUrl: 'post.component.html',
+    templateUrl: 'home-index.component.html',
     styles: [`
     .bannerStyle h1 {
         background-color: #ccc;
@@ -25,7 +26,6 @@ import { NgxCarousel } from 'ngx-carousel';
         border-radius: 999px;
         left: 0;
     }
- 
     .rightRs {
         position: absolute;
         margin: auto;
@@ -37,13 +37,38 @@ import { NgxCarousel } from 'ngx-carousel';
         border-radius: 999px;
         right: 0;
     }
-  `]
+  `],
+  animations: [  slideInDownAnimation ]
 })
 
-export class PostComponent implements OnInit {
+export class HomeIndexComponent implements OnInit {
+    public listCourse: any  = [] ;
+    public objCourse: any = {} ;
     public carouselOne: NgxCarousel;
-    constructor( private router: Router, private http:  HttpClient, private config: ConfigValue ) { }
+    constructor( private router: Router, private http:  HttpClient, private config: ConfigValue ,
+    private title: Title) {
+    this.title.setTitle('Trang Trủ');
+    }
     ngOnInit() {
+        this.http.get(this.config.url_port + '/user/course?page=1&size=4').subscribe(data => {
+            this.objCourse = data;
+            // console.log(this.objCourse.listOfResult);
+            this.listCourse = this.objCourse.listOfResult;
+            // console.log(this.listCourse)
+        })
+        const  user: any = {} ;
+         user.username = 'tttthuy' ;
+         user.password = '82839893';
+        //  const headers = new HttpHeaders();
+        //  headers.set('Content-Type', 'application/json');
+       //  headers.append('Accept', 'application/json')
+        this.http.post('http://10.5.50.12:8080/login' , JSON.stringify(user) ).subscribe( data => {
+             console.log(data);
+             console.log(data);
+        }, (err: HttpErrorResponse)  => {
+            console.log(err.headers
+            );
+        });
         const test: any = {} ;
          test.email  = 'lang.tt16@gmail.com';
          test.password = '1234';
@@ -105,4 +130,9 @@ export class PostComponent implements OnInit {
         this.router.navigate(['components/mydemo']) ;
 
     }
+     public  goProducts(id: any) {
+       console.log(id);
+        this.router.navigate(['/home/course'], { queryParams: { id: id } });
+        window.scrollTo(0, 0);
+      }
 }

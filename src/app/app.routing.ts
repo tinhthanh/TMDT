@@ -23,7 +23,7 @@ import {
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: '/home/post',
+    redirectTo: '/home/index',
     pathMatch: 'full',
   },
   {

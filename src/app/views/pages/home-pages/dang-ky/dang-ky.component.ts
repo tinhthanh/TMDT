@@ -53,7 +53,7 @@ private title: Title ) {
     )
      }
     ngOnInit() {
-        this.title.setTitle('Đăng ký tài khoãn')
+        this.title.setTitle('Đăng ký tài khoản')
     }
     public registerSubmit() {
         this.loading = false ;

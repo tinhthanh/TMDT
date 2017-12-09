@@ -26,6 +26,7 @@
     "@angular/platform-server": "^4.4.4",
     "@angular/router": "4.4.4",
     "@angular/upgrade": "4.4.4",
+    "alignment": "0.0.1",
     "chart.js": "2.7.0",
     "ckeditor": "^4.7.3",
     "core-js": "2.5.1",

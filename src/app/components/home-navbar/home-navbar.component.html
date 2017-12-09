@@ -30,18 +30,69 @@
                         <a class="dropdown-item" href="#"><i class="fa fa-database"></i> CƠ SỞ DỮ LIỆU</a>
                     </div>
                 </li>
+             
+                <li class="nav-item dropdown">
+                        <a style="color:red;" (click)="orderShow=!orderShow" class="nav-link dropdown-toggle"  id="navbardropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                Giỏ ( {{cartService.tongSL}} )
+                            </a>
+                            <div *ngIf="orderShow" style="display: block;" class="dropdown-menu  shopping-cart" aria-labelledby="navbardropdown">
+                               
+                                <table class="table table-responsive-md">
+                                                <thead>
+                                                  <tr>
+                                                    <th scope="col">#</th>
+                                                    <th scope="col">Tên sản phẩm</th>
+                                                    <th scope="col">Hình ảnh</th>
+                                                    <th scope="col">Đơn giá</th>
+                                                    <th scope="col">Số lượng</th>
+                                                    <th scope="col">Thành tiền</th>
+                                                  </tr>
+                                                </thead>
+                                                <tbody>
+                                                  <tr *ngFor="let item of cart " >
+                                                    <th scope="row">1</th>
+                                                    <td> {{item.name}}</td>
+                                                    <td>
+                                                        <img style="width: 50px;" src="{{item.image}}" alt="hình ảnh">
+                                                       
+                                                    </td>
+                                                    <td>{{item.price}} đ</td>
+                                                    <td>
+                                                        <input type="number" (input)="onSearchChange($event.target.value ,item.id)" value="{{ item.count }}" name="quantity" min="1" max="5">
+                                                        <i (click)="deleteItem(item.id)" class="fa fa-user"></i>
+                                                    </td>
+                                                    <td>{{item.price*item.count}} đ</td>
+                                                  </tr>
+                                                </tbody>
+                                              </table>
+                                              <div class="row">
+                                                <div class="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3"></div>
+                                                  <div class="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3 text-right">
+                                                      Tổng tiền:
+                                                  </div>
+                                                  <div class="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
+                                                    {{ cartService.tong }} đ
+                                                </div>
+                                                <div class="col-3 col-sm-3 col-md-3 col-lg-3 col-xl-3">
+                                                    <button class="btn btn-primary">Thanh toán</button>
+                                                </div>
+                                              </div>
+                                </div>
+                </li>
                 <li  *ngIf="!isLogin" class="nav-item">
-                    <a class="nav-link" routerLink="/pages/home-pages/dang-nhap"><i class="fa fa-user"></i> ĐĂNG NHẬP </a>
-                </li>
-                <li *ngIf="!isLogin" class="nav-item">
-                    <a class="nav-link" routerLink="/pages/home-pages/dang-ky" ><i class="fa fa-user-plus"></i> ĐĂNG KÝ</a>
-                </li>
-                <li *ngIf="isLogin" class="nav-item">
-                    <a class="nav-link"  ><i class="fa fa-user-plus"></i> Hi! {{user?.userName}}</a>
-                </li>
-                <li class="nav-item">
-                    <a class="nav-link" routerLink="/pages/home-pages/dang-nhap"><i class="fa fa-user"></i> Giỏ Hàng (10) </a>
-                </li>
+                        <a class="nav-link" routerLink="/pages/home-pages/dang-nhap"><i class="fa fa-user"></i> ĐĂNG NHẬP </a>
+                    </li>
+                    <li *ngIf="!isLogin" class="nav-item">
+                        <a class="nav-link" routerLink="/pages/home-pages/dang-ky" ><i class="fa fa-user-plus"></i> ĐĂNG KÝ</a>
+                    </li>
+                    <li *ngIf="isLogin" class="nav-item dropdown">
+                            <a (click)="profileShow=!profileShow" class="nav-link dropdown-toggle"  id="navbardropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                 Hi! {{user?.userName}}
+                            </a>
+                            <div *ngIf="profileShow" style="display: block;" class="dropdown-menu" aria-labelledby="navbardropdown">
+                                <a class="dropdown-item"  (click)="logout()"><i class="fa fa-android"></i> Đăng xuất</a>
+                            </div>
+                        </li>
             </ul>
             <form class="form-inline input-search2">
                 <input type="text" name="search" placeholder="Tìm kiếm ...">

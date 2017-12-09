@@ -1,3 +1,4 @@
+import { ShoppingCartService } from './_service/shopping-cart/shopping-cart.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NgModule } from '@angular/core';
@@ -98,7 +99,9 @@ import { CKEditorModule } from 'ng2-ckeditor';
   providers: [{
     provide: LocationStrategy,
     useClass: HashLocationStrategy
-  }],
+  },
+  ShoppingCartService
+],
   bootstrap: [ AppComponent ]
 })
 export class AppModule {

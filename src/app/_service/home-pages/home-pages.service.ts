@@ -10,15 +10,15 @@ export class HomePagesService {
         return this.http.post(this.config.url_port + '/auth/login', user);
     }
     public homeRegister(user: any ): any {
-     return this.http.post(this.config.l_port + '/user', user);
+     return this.http.post(this.config.url_port + '/user', user);
     }
     public homeActiveLink(link: string): any {
-         return this.http.patch(this.config.l_port + '/user/register_status' , link);
+         return this.http.patch(this.config.url_port+ '/user/register_status' , link);
     }
     public checkforget(email: string): any {
-         return this.http.get(this.config.l_port + '/user/token_reset_password?email=' + email );
+         return this.http.get(this.config.url_port + '/user/token_reset_password?email=' + email );
     }
     public forgetPass( obj: any ): any {
-    return this.http.patch(this.config.l_port + '/user/password_reset', obj );
+    return this.http.patch(this.config.url_port + '/user/password_reset', obj );
     }
 }
