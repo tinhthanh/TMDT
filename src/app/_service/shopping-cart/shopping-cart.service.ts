@@ -34,6 +34,13 @@ export class ShoppingCartService {
     //     localStorage.setItem(this.config.cart, JSON.stringify( this.cart));
     // }
     public addItem( item: Item  ) {
+         for ( let i = 0 ; i < this.cart.length ; i ++  ) {
+             if ( this.cart[i].id === item.id ) {
+                 this.cart[i].count += 1;
+                 this.tinhTong();
+                 return ;
+             }
+         }
         this.cart.push(item);
     //    this.saveCart();
        this.tinhTong();

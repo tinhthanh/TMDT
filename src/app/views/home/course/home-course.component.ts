@@ -75,7 +75,9 @@ export class HomeCourseComponent implements OnInit {
         })
      }
      public formatVND(num) {
-    return num.toFixed(3).replace(/(\d)(?=(\d{3})+\.)/g, '$&,');
+         const temp =  num.toFixed(3).replace(/(\d)(?=(\d{3})+\.)/g, '$&,');
+         const  count = temp.length;
+    return temp.substring(0, count - 4 );
     }
     public ghiDanh() {
         this.cartService.addItem(this.item);
